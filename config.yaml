@@ -1,0 +1,55 @@
+optimized: 
+  learning_rate_exp: 
+    - float
+    - -4
+    - -2
+  learning_rate_exp_l:
+    - float
+    - -4
+    - -1
+
+data:
+  dataset: mnist
+  task: conditional_generate # generate for GAN and conditional_generate for CGAN
+  scaler: "01"
+  batch_size: 64
+  shuffle_train: True
+    
+study:  
+  number_of_trials: 10
+  direction: minimize
+  optimization_target: GenLoss
+  study_name: GAN # GAN for normal GAN and Conditional_GAN for CGAN
+
+network:
+  hidden_channels: 64
+  final_layer: 'nlrl' # only 'linear', or 'nlrl' and this is about choosing the discriminator
+
+learning:
+  num_epochs: 15
+  testevery: 1
+  criterion: BCELoss
+  # learning_rate_exp: -3.648271723568362
+  # learning_rate_exp_l: -2.5790998764132906
+  model: 'CGAN' # CGAN or GAN
+  noise_dim: 10
+  threshold: 0.5
+  layer: 'nlrl'
+
+classifier_nlrl: # make no changes
+  filter_growth_rate: 2
+  dropout_rate: 0.2
+  final_channel: 8
+  activation_function: RReLU
+  initial_out_channels: 32
+  final_layer: 'nlrl'
+  num_blocks: 3
+
+classifier_linear: # make no changes
+  filter_growth_rate: 2
+  dropout_rate: 0.2
+  final_channel: 8
+  activation_function: RReLU
+  initial_out_channels: 32
+  final_layer: 'linear'
+  num_blocks: 3

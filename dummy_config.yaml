@@ -1,0 +1,36 @@
+data:
+  dataset: mnist
+  task: generate # generate for GAN and conditional_generate for CGAN
+  scaler: "01"
+  batch_size: 64
+
+network:
+  hidden_channels: 64
+  
+learning:
+  num_epochs: 15
+  testevery: 1
+  criterion: BCELoss
+  model: 'GAN' # CGAN or GAN
+  learning_rate_exp: -3.0254287065635785
+  learning_rate_exp_l: -2.2008976111426968
+  noise_dim: 10
+  threshold: 0.5
+
+classifier_nlrl: # make no changes
+  filter_growth_rate: 2
+  dropout_rate: 0.2
+  final_channel: 8
+  activation_function: RReLU
+  initial_out_channels: 32
+  final_layer: 'nlrl'
+  num_blocks: 3
+
+classifier_linear: # make no changes
+  filter_growth_rate: 2
+  dropout_rate: 0.2
+  final_channel: 8
+  activation_function: RReLU
+  initial_out_channels: 32
+  final_layer: 'linear'
+  num_blocks: 3
