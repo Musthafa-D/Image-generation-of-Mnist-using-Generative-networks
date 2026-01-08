@@ -7,6 +7,8 @@ The objective is to learn the underlying data distribution and generate realisti
 
 MNIST is a standard benchmark dataset for both classification and generative modeling tasks.
 
+This repository provides scripts for training generative models, visualizing the generated images and interpretability methods of the generative models.
+
 ---
 
 ## Dataset
@@ -26,5 +28,7 @@ Both gans and conditional gans are implemented.
 - Training loop for adversarial / generative learning
 - Visualization of generated samples
 - Comparison of generated images over training epochs
+- Interpretability of the trained generative models.
 
 ---
+
